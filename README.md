@@ -2,7 +2,7 @@
 
 # express-mongo-db
 
-> Get db connection in request
+> Get the MongoDB connection in the request in Express.
 
 
 ## Install
