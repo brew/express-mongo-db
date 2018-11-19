@@ -1,7 +1,7 @@
 {
   "name": "express-mongo-db",
   "version": "4.0.0",
-  "description": "Get db connection in request",
+  "description": "Get the MongoDB connection in the request in Express.",
   "license": "MIT",
   "repository": "1RM/express-mongo-db",
   "author": {
