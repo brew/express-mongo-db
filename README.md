@@ -8,7 +8,7 @@
 ## Install
 
 ```
-$ npm install --save express-mongo-db
+$ npm install --save https://github.com/1RM/express-mongo-db
 ```
 
 
