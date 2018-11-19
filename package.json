@@ -1,19 +1,13 @@
 {
   "name": "express-mongo-db",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "Get db connection in request",
   "license": "MIT",
-  "repository": "floatdrop/express-mongo-db",
+  "repository": "1RM/express-mongo-db",
   "author": {
-    "name": "Vsevolod Strukchinsky",
-    "email": "floatdrop@gmail.com",
-    "url": "github.com/floatdrop"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "eslint . && tap test.js"
+    "name": "Shane Jeffery",
+    "email": "shane.jeffery54@gmail.com",
+    "url": "github.com/1RM"
   },
   "files": [
     "index.js"
@@ -24,14 +18,9 @@
     "express"
   ],
   "dependencies": {
-    "mongodb": "^2.0.39"
+    "mongodb": "^3.1.10"
   },
   "devDependencies": {
-    "eslint": "^1.0.0",
-    "eslint-config-xo": "^0.1.0",
-    "tap": "^1.3.2"
-  },
-  "eslintConfig": {
-    "extends": "xo"
+    "tap": "^12.1.0"
   }
 }

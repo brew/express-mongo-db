@@ -1,31 +1,27 @@
-'use strict';
+const MongoClient = require('mongodb').MongoClient;
 
-var MongoClient = require('mongodb').MongoClient;
-
-module.exports = function (uri, opts) {
+module.exports = function (uri, dbName, opts) {
 	if (typeof uri !== 'string') {
-		throw new TypeError('Expected uri to be a string');
+		throw new TypeError('Expected uri to be a string.');
 	}
 
 	opts = opts || {};
-	var property = opts.property || 'db';
+	const property = opts.property || 'db';
 	delete opts.property;
 
-	var connection;
+	 let client;
 
-	return function expressMongoDb(req, res, next) {
-		if (!connection) {
-			connection = MongoClient.connect(uri, opts);
+	return async function expressMongoDb(req, res, next) {
+		if (!client) {
+			client = await MongoClient.connect(uri, opts);
 		}
 
-		connection
-			.then(function (db) {
-				req[property] = db;
-				next();
-			})
-			.catch(function (err) {
-				connection = undefined;
-				next(err);
-			});
-	};
+		try {
+            req[property] = client.db(dbName);
+            next();
+		} catch (err) {
+			client = undefined;
+			next(err);
+		}
+    }
 };
