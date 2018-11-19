@@ -1,6 +1,6 @@
 ***Updated for MongoDB V4.X.X***
 
-# express-mongo-db [![Build Status](https://travis-ci.org/floatdrop/express-mongo-db.svg?branch=master)](https://travis-ci.org/floatdrop/express-mongo-db)
+# express-mongo-db
 
 > Get db connection in request
 
