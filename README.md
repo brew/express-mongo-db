@@ -1,3 +1,5 @@
+***Updated for MongoDB V4.X.X***
+
 # express-mongo-db [![Build Status](https://travis-ci.org/floatdrop/express-mongo-db.svg?branch=master)](https://travis-ci.org/floatdrop/express-mongo-db)
 
 > Get db connection in request
@@ -16,7 +18,7 @@ $ npm install --save express-mongo-db
 var app = require('express')();
 
 var expressMongoDb = require('express-mongo-db');
-app.use(expressMongoDb('mongodb://localhost/test'));
+app.use(expressMongoDb('mongodb://localhost'), 'databaseName');
 
 app.get('/', function (req, res, next) {
 	req.db // => Db object
@@ -26,14 +28,21 @@ app.get('/', function (req, res, next) {
 
 ## API
 
-### expressMongoDb(uri, [options])
+### expressMongoDb(uri, databaseName, [options])
 
 #### uri
 
 *Required*  
 Type: `string`
 
-[Connection string uri](http://docs.mongodb.org/manual/reference/connection-string/).
+This is simply the URL for the Mongo connection, minus the database name.  The MongoClient connection changed in MongoDB V3, where it now returns the client instead of the DB.
+
+### databaseName
+
+*Required*  
+Type: `string`
+
+The name of the database that we are trying to connect to.
 
 #### options
 
@@ -46,7 +55,10 @@ Default: `db`
 
 Property on `request` object in which db connection will be stored.
 
+## Updated License
 
-## License
+MIT © [Shane Jeffery](http://github.com/1RM)
+
+## Original License
 
 MIT © [Vsevolod Strukchinsky](http://github.com/floatdrop)
