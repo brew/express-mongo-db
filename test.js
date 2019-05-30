@@ -35,7 +35,7 @@ test('middleware stores connection to mongodb', async function (t) {
 
 test('middleware stores connection in custom property', async function (t) {
 	const middleware = await expressMongoDb('mongodb://localhost:27017', 'myDb', {
-		property: 'myDb'
+		dbProperty: 'myDb'
 	});
 
 	const req = {};
@@ -48,7 +48,7 @@ test('middleware stores connection in custom property', async function (t) {
 
 test('returns same connection for multiple requests', async function (t) {
 	const middleware = await expressMongoDb('mongodb://localhost:27017', 'myDb', {
-		property: 'myDb'
+		dbProperty: 'myDb'
 	});
 
 	const req = {};

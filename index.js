@@ -6,10 +6,12 @@ module.exports = function (uri, dbName, opts) {
 	}
 
 	opts = opts || {};
-	const property = opts.property || 'db';
-	delete opts.property;
+	const clientProperty = opts.clientProperty || 'client';
+	const dbProperty = opts.dbProperty || 'db';
+	delete opts.clientProperty
+	delete opts.dbProperty;
 
-	 let client;
+	let client;
 
 	return async function expressMongoDb(req, res, next) {
 		if (!client) {
@@ -17,11 +19,12 @@ module.exports = function (uri, dbName, opts) {
 		}
 
 		try {
-            req[property] = client.db(dbName);
-            next();
+      req[dbProperty] = client.db(dbName);
+      req[clientProperty] = client;
+      next();
 		} catch (err) {
 			client = undefined;
 			next(err);
 		}
-    }
+  }
 };

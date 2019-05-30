@@ -8,7 +8,7 @@
 ## Install
 
 ```
-$ npm install --save https://github.com/1RM/express-mongo-db
+$ npm install --save https://github.com/brew/express-mongo-db
 ```
 
 
@@ -21,10 +21,10 @@ var expressMongoDb = require('express-mongo-db');
 app.use(expressMongoDb('mongodb://localhost'), 'databaseName');
 
 app.get('/', function (req, res, next) {
-	req.db // => Db object
+	req.db  // Db object
+  req.client  // Client object
 });
 ```
-
 
 ## API
 
@@ -32,14 +32,14 @@ app.get('/', function (req, res, next) {
 
 #### uri
 
-*Required*  
+*Required*
 Type: `string`
 
 This is simply the URL for the Mongo connection, minus the database name.  The MongoClient connection changed in MongoDB V3, where it now returns the client instead of the DB.
 
 ### databaseName
 
-*Required*  
+*Required*
 Type: `string`
 
 The name of the database that we are trying to connect to.
@@ -48,12 +48,19 @@ The name of the database that we are trying to connect to.
 
 All options from [MongoClient](http://mongodb.github.io/node-mongodb-native/2.0/api/MongoClient.html) are accepted as well.
 
-##### property
+##### dbProperty
 
-Type: `String`  
+Type: `String`
 Default: `db`
 
 Property on `request` object in which db connection will be stored.
+
+##### clientProperty
+
+Type: `String`
+Default: `client`
+
+Property on `request` object in which client will be stored.
 
 ## Updated License
 
